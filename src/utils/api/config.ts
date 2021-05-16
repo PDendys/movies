@@ -1,5 +1,5 @@
 const config = {
-    baseHost: "http://www.omdbapi.com/"
+    baseHost: "https://www.omdbapi.com/"
 }
 
 export {
