@@ -3,19 +3,18 @@ import React from 'react';
 // types
 import { IMovie } from 'types';
 
-interface InitialState {
+interface MoviesData {
     movies: IMovie[];
-    error: any;
     isEmpty: boolean;
+    error: unknown;
 }
 
-const initState: InitialState | any = {
-    movies: [],
-    error: null,
-    isEmpty: true,
-};
+interface MoviesDataProvider {
+    moviesData: MoviesData;
+    setMoviesData: (data: MoviesData) => void;
+}
 
-const MoviesDataProviderContext = React.createContext(initState);
+const MoviesDataProviderContext = React.createContext<MoviesDataProvider>({} as MoviesDataProvider);
 
 function useMoviesData() {
     const context = React.useContext(MoviesDataProviderContext);
@@ -28,11 +27,11 @@ function useMoviesData() {
 }
 
 type Props = {
-    children: React.ReactNode;
+    readonly children: React.ReactNode;
 }
 
 const MoviesDataProvider: React.FC<Props> = ({ children }: Props): React.ReactElement => {
-    const [moviesData, setMoviesData] = React.useState<InitialState>(initState);
+    const [moviesData, setMoviesData] = React.useState<MoviesData>({} as MoviesData);
 
     return (
         <MoviesDataProviderContext.Provider value={{ moviesData, setMoviesData }}>
@@ -44,5 +43,4 @@ const MoviesDataProvider: React.FC<Props> = ({ children }: Props): React.ReactEl
 export {
     MoviesDataProvider,
     useMoviesData,
-    MoviesDataProviderContext
 };

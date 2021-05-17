@@ -7,7 +7,7 @@ import MovieBlock from 'components/movie-block';
 
 // hooks
 import { useIsFetching } from 'react-query'
-import { useMoviesData } from 'components/MoviesData.provider';
+import { useMoviesData } from 'providers/MoviesData.provider';
 
 // types
 import { IMovie } from 'types';
@@ -18,19 +18,25 @@ const List: React.FC = () => {
 
     const { movies, error } = moviesData;
 
+    const renderList = React.useCallback((): React.ReactElement => {
+        if (!movies) {
+            return error ? <p>Nothing was found</p> : <p>Type something to start searching</p>;
+        }
+        if (isFetching) {
+            return <Loader />
+        }
+
+        return (
+            <div className="row">
+                { movies && movies.map((movie: IMovie) => <MovieBlock key={uuidv4()} movie={movie} />) }
+            </div>
+        );
+    }, [movies, isFetching, error]);
+
     return (
         <div>
             <h2 className="mb-3">Movies</h2>
-            { !movies && error && <p>Nothing was found</p> }
-            {
-                isFetching
-                    ? <Loader />
-                    : (
-                    <div className="row">
-                        { movies && movies.map((movie: IMovie) => <MovieBlock key={uuidv4()} movie={movie} />) }
-                    </div>
-                )
-            }
+            { renderList() }
         </div>
     )
 }
