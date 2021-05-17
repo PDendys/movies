@@ -9,12 +9,12 @@ interface MoviesData {
     error: unknown;
 }
 
-interface MoviesDataProvider {
+interface IMoviesDataProvider {
     moviesData: MoviesData;
     setMoviesData: (data: MoviesData) => void;
 }
 
-const MoviesDataProviderContext = React.createContext<MoviesDataProvider>({} as MoviesDataProvider);
+const MoviesDataProviderContext = React.createContext<IMoviesDataProvider>({} as IMoviesDataProvider);
 
 function useMoviesData() {
     const context = React.useContext(MoviesDataProviderContext);
