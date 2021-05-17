@@ -2,10 +2,10 @@ import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query'
 
 // components
-import SearchBar from './components/search-bar';
-import List from './components/list';
+import SearchBar from 'components/search-bar';
+import List from 'components/list';
 
-import { MoviesDataProvider } from './components/MoviesData.provider';
+import { MoviesDataProvider } from 'providers/MoviesData.provider';
 
 const queryClient = new QueryClient({
     defaultOptions: {

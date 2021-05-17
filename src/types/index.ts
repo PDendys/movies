@@ -14,6 +14,7 @@ export interface IResponse {
     Error?: any;
 }
 
+// Enums
 export enum QueryKeys {
     MOVIES = 'movies'
 }

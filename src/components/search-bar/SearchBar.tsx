@@ -3,8 +3,9 @@ import React from 'react';
 // hooks
 import { useQuery } from 'react-query';
 import useDebounce from 'hooks/useDebounce';
-import { useMoviesData } from 'components/MoviesData.provider';
+import { useMoviesData } from 'providers/MoviesData.provider';
 
+// utils
 import moviesApi from 'utils/api';
 
 // types
