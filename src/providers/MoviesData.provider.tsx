@@ -16,16 +16,6 @@ interface IMoviesDataProvider {
 
 const MoviesDataProviderContext = React.createContext<IMoviesDataProvider>({} as IMoviesDataProvider);
 
-function useMoviesData() {
-    const context = React.useContext(MoviesDataProviderContext);
-
-    if (context === undefined) {
-        throw new Error('Must be used within MoviesDataProvider.');
-    }
-
-    return context;
-}
-
 type Props = {
     readonly children: React.ReactNode;
 }
@@ -42,5 +32,5 @@ const MoviesDataProvider: React.FC<Props> = ({ children }: Props): React.ReactEl
 
 export {
     MoviesDataProvider,
-    useMoviesData,
+    MoviesDataProviderContext,
 };

@@ -3,11 +3,12 @@ import { v4 as uuidv4 } from 'uuid';
 
 // components
 import Loader from 'components/loader';
+import ListHeader from 'components/list-header';
 import MovieBlock from 'components/movie-block';
 
 // hooks
 import { useIsFetching } from 'react-query'
-import { useMoviesData } from 'providers/MoviesData.provider';
+import useMoviesData from 'hooks/useMoviesData';
 
 // types
 import { IMovie } from 'types';
@@ -19,23 +20,23 @@ const List: React.FC = () => {
     const { movies, error } = moviesData;
 
     const renderList = React.useCallback((): React.ReactElement => {
-        if (!movies) {
-            return error ? <p>Nothing was found</p> : <p>Type something to start searching</p>;
-        }
         if (isFetching) {
             return <Loader />
         }
+        if (!movies) {
+            return <div className="col-12">{ error ? 'Nothing was found' : 'Type something to start searching' }</div>;
+        }
 
         return (
-            <div className="row">
+            <React.Fragment>
                 { movies && movies.map((movie: IMovie) => <MovieBlock key={uuidv4()} movie={movie} />) }
-            </div>
+            </React.Fragment>
         );
     }, [movies, isFetching, error]);
 
     return (
-        <div>
-            <h2 className="mb-3">Movies</h2>
+        <div className="row mb-3">
+            <ListHeader results={movies?.length} />
             { renderList() }
         </div>
     )

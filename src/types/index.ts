@@ -9,7 +9,7 @@ export interface IMovie {
 
 export interface IResponse {
     Response: string;
-    Search: string;
+    Search: IMovie[];
     totalResults: string;
     Error?: any;
 }

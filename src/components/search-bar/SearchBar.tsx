@@ -3,7 +3,7 @@ import React from 'react';
 // hooks
 import { useQuery } from 'react-query';
 import useDebounce from 'hooks/useDebounce';
-import { useMoviesData } from 'providers/MoviesData.provider';
+import useMoviesData from 'hooks/useMoviesData';
 
 // utils
 import moviesApi from 'utils/api';
