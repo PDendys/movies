@@ -17,3 +17,8 @@ export interface IResponse {
 export enum QueryKeys {
     MOVIES = 'movies'
 }
+
+export enum Breakpoints {
+    TABLET = '768px',
+    LAPTOP = '1024px',
+}

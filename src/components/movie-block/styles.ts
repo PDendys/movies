@@ -1,9 +1,20 @@
 import styled from 'styled-components'
 
+// types
+import { Breakpoints } from 'types';
+
 const MovieBlockStyled = styled.div`
-    width: 33.33%;
+    width: 100%;
     padding: 0 15px;
     text-align: left;
+
+    @media (min-width: ${Breakpoints.TABLET}) {
+        width: 50%;
+    }
+    
+    @media (min-width: ${Breakpoints.LAPTOP}) {
+        width: 33.33%;
+    }
     
     .poster {
          max-height: 170px;
