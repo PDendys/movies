@@ -1,4 +1,5 @@
 # Find movie app
+Simple application for the finding movies. This one was build in order to present web technologies to the children (during primary school showcase).
 
 #### Tech stack
 - React (based on CRA starter)
@@ -20,3 +21,6 @@ Application is based on provider pattern. We have provider component that helps 
 Since application is very little we can use for it just one context.
 React query was used as data fetching tool (I have never used this and i wanted to test it).
 Debouncing is used on input in order to avoid to many http requests.
+
+#### Environment
+Node 16.0.0 is required because react scripts packages was used. In order have possibility to use old node version nvm was introduced.
